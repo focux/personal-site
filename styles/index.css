@@ -15,4 +15,13 @@
   line-height: 1.15;
 }
 
+::selection {
+  @apply bg-primary-500;
+  @apply text-white;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
 @tailwind utilities;

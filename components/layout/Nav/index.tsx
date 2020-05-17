@@ -5,7 +5,7 @@ type NavLinks = { url: string; name: string };
 
 const leftSideLinks: NavLinks[] = [
   {
-    url: '',
+    url: '#writing',
     name: 'Writing',
   },
   {
@@ -37,7 +37,9 @@ const Nav: React.FC = () => {
       />
       <Menu>
         {leftSideLinks.map((v) => (
-          <MenuItem key={v.name}>{v.name}</MenuItem>
+          <MenuItem key={v.name} href={v.url}>
+            {v.name}
+          </MenuItem>
         ))}
       </Menu>
       <div
@@ -58,7 +60,7 @@ const Nav: React.FC = () => {
       </div>
       <Menu>
         {rightSideLinks.map((v) => (
-          <MenuItem key={v.name}>{v.name}</MenuItem>
+          <MenuItem key={v.name} href={v.url}>{v.name}</MenuItem>
         ))}
       </Menu>
     </div>
