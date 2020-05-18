@@ -8,7 +8,7 @@ type NavLinks = { url: string; name: string };
 
 const leftSideLinks: NavLinks[] = [
   {
-    url: '',
+    url: '#writing',
     name: 'Writing',
   },
   {
@@ -40,14 +40,22 @@ const Nav: React.FC<NavProps> = ({ type = 'regular' }) => {
     >
       {!isPostNav && (
         <>
+          {/* <div
+            className="w-screen h-px bg-gray-200 absolute hidden lg:block z-10"
+            style={{ top: -1, left: '50%', transform: 'translateX(-50%)' }}
+          />
           <div
+            className="w-screen h-px bg-gray-200 absolute hidden lg:block z-10"
+            style={{ bottom: -1, left: '50%', transform: 'translateX(-50%)' }}
+          /> */}
+          {/* <div
             className="h-screen w-px bg-gray-200 absolute left-0 hidden lg:block"
             style={{ top: -96 }}
           />
           <div
             className="h-screen w-px bg-gray-200 absolute right-0 hidden lg:block"
             style={{ top: -96 }}
-          />
+          /> */}
         </>
       )}
       <Menu className="z-10 hidden lg:flex">
@@ -76,14 +84,14 @@ const Nav: React.FC<NavProps> = ({ type = 'regular' }) => {
         <div className="relative">
           {!isPostNav && (
             <>
-              <div
+              {/* <div
                 className="h-screen w-px bg-gray-200 absolute hidden lg:block"
                 style={{ top: -96, right: -1, zIndex: -1 }}
               />
               <div
                 className="h-screen w-px bg-gray-200 absolute hidden lg:block"
                 style={{ top: -96, left: -1, zIndex: -1 }}
-              />
+              /> */}
             </>
           )}
           <Link href="/">
