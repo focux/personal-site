@@ -4,6 +4,7 @@ import Paragraph from '../../components/shared/Paragraph';
 import markdownToReact from '../../lib/markdownToReact';
 import { getPostBySlug, getAllPosts } from '../../lib/api';
 import dayjs from 'dayjs';
+import { Head } from 'next/document';
 
 export default function PostPage({
   post: { content, title, category, date, time },
@@ -11,16 +12,21 @@ export default function PostPage({
   const parsedContent = markdownToReact(content);
 
   return (
-    <article className="container mx-auto px-32 py-24">
-      <Nav type="post" />
-      <Heading level={1} className="mt-20" style={{ fontWeight: 200 }}>
-        {title}
-      </Heading>
-      <Paragraph className="text-gray-500">
-        {date} / {category} / {time}
-      </Paragraph>
-      <main className="space-y-8 mt-12">{parsedContent}</main>
-    </article>
+    <>
+      <Head>
+        <title>{title}</title>
+      </Head>
+      <article className="container mx-auto px-32 py-24">
+        <Nav type="post" />
+        <Heading level={1} className="mt-20" style={{ fontWeight: 200 }}>
+          {title}
+        </Heading>
+        <Paragraph className="text-gray-500">
+          {date} / {category} / {time}
+        </Paragraph>
+        <main className="space-y-8 mt-12">{parsedContent}</main>
+      </article>
+    </>
   );
 }
 

@@ -4,10 +4,14 @@ import SocialButtons from '../components/home/SocialButtons';
 import AboutMe from '../components/home/AboutMe';
 import BlogPosts from '../components/home/BlogPosts';
 import { getAllPosts } from '../lib/api';
+import { Head } from 'next/document';
 
 export default function IndexPage({ posts }) {
   return (
     <div className="container mx-auto px-8 md:px-16 lg:px-32 pt-24">
+      <Head>
+        <title>Focux | Leonardo E. Dominguez</title>
+      </Head>
       <Nav />
       <Hero className="mt-24" />
       <SocialButtons className="mt-12" />

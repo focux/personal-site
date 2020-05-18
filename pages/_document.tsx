@@ -8,7 +8,7 @@ export default class MyDocument extends Document<{ ids: any[]; css: any }> {
 
   render() {
     return (
-      <html>
+      <html lang="en">
         <Head>
           <link rel="stylesheet" href="https://rsms.me/inter/inter.css" />
         </Head>
