@@ -4,7 +4,7 @@ import Paragraph from '../../components/shared/Paragraph';
 import markdownToReact from '../../lib/markdownToReact';
 import { getPostBySlug, getAllPosts } from '../../lib/api';
 import dayjs from 'dayjs';
-import { Head } from 'next/document';
+import Head from 'next/head'
 
 export default function PostPage({
   post: { content, title, category, date, time },

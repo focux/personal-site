@@ -4,7 +4,7 @@ import SocialButtons from '../components/home/SocialButtons';
 import AboutMe from '../components/home/AboutMe';
 import BlogPosts from '../components/home/BlogPosts';
 import { getAllPosts } from '../lib/api';
-import { Head } from 'next/document';
+import Head from 'next/head';
 
 export default function IndexPage({ posts }) {
   return (
