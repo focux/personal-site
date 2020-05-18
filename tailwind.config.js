@@ -1,7 +1,8 @@
 const defaultTheme = require('tailwindcss/defaultTheme');
+const plugin = require('tailwindcss/plugin')
 
 module.exports = {
-  purge: ['./components/**/*.js', './pages/**/*.js'],
+  purge: ['./components/**/*.tsx', './pages/**/*.tsx'],
   theme: {
     extend: {
       fontFamily: {
@@ -20,8 +21,25 @@ module.exports = {
           900: '#01164C',
         },
       },
+      screens: {
+        dark: { raw: '(prefers-color-scheme: dark)' },
+        // => @media (prefers-color-scheme: dark) { ... }
+      },
     },
   },
-  variants: {},
-  plugins: [],
+  variants: {
+    fontSize: ['responsive', 'hover', 'focus', 'important']
+  },
+  plugins: [
+    plugin(function ({ addVariant, variants }) {
+      addVariant('important', ({ container }) => {
+        container.walkRules((rule) => {
+          rule.selector = `.\\!${rule.selector.slice(1)}`;
+          rule.walkDecls((decl) => {
+            decl.important = true;
+          });
+        });
+      });
+    }),
+  ],
 };

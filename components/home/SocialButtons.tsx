@@ -15,11 +15,11 @@ const SocialButtons: React.FC<ClassNameProp> = ({ className }) => {
   return (
     <div className={containerClassName}>
       <div
-        className="w-screen h-px bg-gray-200 absolute top-0"
+        className="w-screen h-px bg-gray-200 absolute top-0 hidden lg:block"
         style={{ left: '50%', transform: 'translateX(-50%)' }}
       />
       <div
-        className="w-screen h-px bg-gray-200 absolute bottom-0"
+        className="w-screen h-px bg-gray-200 absolute bottom-0 hidden lg:block"
         style={{ left: '50%', transform: 'translateX(-50%)' }}
       />
       <a

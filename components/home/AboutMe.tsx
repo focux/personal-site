@@ -5,14 +5,14 @@ import Link from '../shared/Link';
 const AboutMe: React.FC<ClassNameProp> = ({ className }) => {
   const containerClassName = classNames(
     className,
-    'text-2xl space-y-8 leading-relaxed',
+    'text-xl sm:text-2xl space-y-8 leading-relaxed z-2 relative',
   );
 
   return (
     <div className={containerClassName}>
       <p>
         I'm a software developer interested in jamstack, mobile apps, user
-        experience and under engineering.
+        experience and new tech —now looking at Rust.
       </p>
       <p>
         Right now I'm working with{' '}
@@ -26,7 +26,7 @@ const AboutMe: React.FC<ClassNameProp> = ({ className }) => {
         <span role="img" aria-label="Dominican Republic Flag">
           🇩🇴
         </span>
-        , I love to go camping out in the mountains and working from the beach.
+        , I love to go camping in the mountains and working from the beach.
       </p>
     </div>
   );
