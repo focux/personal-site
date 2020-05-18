@@ -16,9 +16,9 @@ export default function PostPage({
       <Head>
         <title>{title}</title>
       </Head>
-      <article className="container mx-auto px-32 py-24">
+      <article className="container mx-auto px-8 md:px-16 lg:px-32 py-24">
         <Nav type="post" />
-        <Heading level={1} className="mt-20" style={{ fontWeight: 200 }}>
+        <Heading level={1} className="mt-20 !text-4xl sm:!text-5xl" style={{ fontWeight: 200 }}>
           {title}
         </Heading>
         <Paragraph className="text-gray-500">

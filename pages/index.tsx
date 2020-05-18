@@ -10,7 +10,7 @@ export default function IndexPage({ posts }) {
   return (
     <div className="container mx-auto px-8 md:px-16 lg:px-32 pt-24">
       <Head>
-        <title>Focux | Leonardo E. Dominguez</title>
+        <title>Leonardo E. Dominguez | Focux</title>
       </Head>
       <Nav />
       <Hero className="mt-24" />
