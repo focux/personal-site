@@ -9,7 +9,7 @@ const leftSideLinks: NavLinks[] = [
   {
     url: '#writing',
     name: 'Writing',
-  }
+  },
 ];
 
 const rightSideLinks: NavLinks[] = [
@@ -27,30 +27,10 @@ const Nav: React.FC<NavProps> = ({ type = 'regular' }) => {
   const { darkMode, setDarkMode } = useDarkMode();
 
   return (
-    <div
+    <nav
       className="flex justify-between items-center relative"
       style={{ minHeight: 70 }}
     >
-      {!isPostNav && (
-        <>
-          {/* <div
-            className="w-screen h-px bg-gray-200 absolute hidden lg:block z-10"
-            style={{ top: -1, left: '50%', transform: 'translateX(-50%)' }}
-          />
-          <div
-            className="w-screen h-px bg-gray-200 absolute hidden lg:block z-10"
-            style={{ bottom: -1, left: '50%', transform: 'translateX(-50%)' }}
-          /> */}
-          {/* <div
-            className="h-screen w-px bg-gray-200 absolute left-0 hidden lg:block"
-            style={{ top: -96 }}
-          />
-          <div
-            className="h-screen w-px bg-gray-200 absolute right-0 hidden lg:block"
-            style={{ top: -96 }}
-          /> */}
-        </>
-      )}
       <Menu className="z-10 hidden lg:flex">
         {!isPostNav ? (
           leftSideLinks.map((v) => (
@@ -75,18 +55,6 @@ const Nav: React.FC<NavProps> = ({ type = 'regular' }) => {
         }}
       >
         <div className="relative">
-          {!isPostNav && (
-            <>
-              {/* <div
-                className="h-screen w-px bg-gray-200 absolute hidden lg:block"
-                style={{ top: -96, right: -1, zIndex: -1 }}
-              />
-              <div
-                className="h-screen w-px bg-gray-200 absolute hidden lg:block"
-                style={{ top: -96, left: -1, zIndex: -1 }}
-              /> */}
-            </>
-          )}
           <Link href="/">
             <a className="cursor-pointer">
               <img src="/avatar.png" alt="Leonardo Dominguez's Avatar" />
@@ -119,7 +87,7 @@ const Nav: React.FC<NavProps> = ({ type = 'regular' }) => {
           </div>
         )}
       </Menu>
-    </div>
+    </nav>
   );
 };
 
