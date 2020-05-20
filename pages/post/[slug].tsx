@@ -28,7 +28,7 @@ export default function PostPage({
   });
 
   const twitterText = encodeURI(
-    `"${title}" by @foocux https://focux.dev/post/${slug}"`,
+    `"${title}" by @foocux https://focux.dev/post/${slug}`,
   );
 
   return (
