@@ -1,5 +1,5 @@
 import { DetailedHTMLProps, BlockquoteHTMLAttributes } from 'react';
-import classNames from 'classnames';
+import { getClassName } from '../../lib/getClassName';
 
 type BlockquoteProps = DetailedHTMLProps<
   BlockquoteHTMLAttributes<HTMLElement>,
@@ -7,7 +7,10 @@ type BlockquoteProps = DetailedHTMLProps<
 >;
 
 const Blockquote: React.FC<BlockquoteProps> = ({ className, ...props }) => {
-  const elementClassName = classNames(className, 'border-l-4 border-primary-500 pl-4 text-gray-500');
+  const elementClassName = getClassName({
+    [className]: !!className,
+    'border-l-4 border-primary-500 pl-4 text-gray-500': true,
+  });
 
   return <blockquote className={elementClassName} {...props} />;
 };

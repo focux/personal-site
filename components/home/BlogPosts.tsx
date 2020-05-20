@@ -1,8 +1,7 @@
 import { ClassNameProp } from 'types/common';
-import classNames from 'classnames';
 import Heading from '../shared/Heading';
 import BlogPostsItem from './BlogPostsItem';
-import { getAllPosts, Matter } from '../../lib/api';
+import { Matter } from '../../lib/api';
 import { getClassName } from '../../lib/getClassName';
 
 type BlogPostsProps = {
@@ -15,7 +14,7 @@ const BlogPosts: React.FC<BlogPostsProps> = ({ className, posts }) => {
     [className]: !!className,
     dark: {
       'bg-primary-dark-secondary': true,
-    }
+    },
   });
 
   return (

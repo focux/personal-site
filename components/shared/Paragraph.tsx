@@ -1,5 +1,5 @@
 import { DetailedHTMLProps, HTMLAttributes } from 'react';
-import classNames from 'classnames';
+import { getClassName } from '../../lib/getClassName';
 
 type ParagraphProps = DetailedHTMLProps<
   HTMLAttributes<HTMLParagraphElement>,
@@ -7,7 +7,10 @@ type ParagraphProps = DetailedHTMLProps<
 >;
 
 const Paragraph: React.FC<ParagraphProps> = ({ className, ...props }) => {
-  const elementClassName = classNames(className, 'leading-loose');
+  const elementClassName = getClassName({
+    [className]: !!className,
+    'leading-loose': true,
+  });
 
   return <p className={elementClassName} {...props} />;
 };

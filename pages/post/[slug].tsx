@@ -31,6 +31,16 @@ export default function PostPage({
     `"${title}" by @foocux https://focux.dev/post/${slug}`,
   );
 
+  const shareLinkClassName = getClassName({
+    'cursor-pointer': true,
+    dark: {
+      'hover:text-pink-500': true,
+    },
+    light: {
+      'hover:text-primary-500': true,
+    },
+  });
+
   return (
     <div className={containerClassName}>
       <Head>
@@ -54,7 +64,7 @@ export default function PostPage({
           Share on{' '}
           <a
             href={`https://twitter.com/intent/tweet?text=${twitterText}`}
-            className="cursor-pointer hover:text-primary-500"
+            className={shareLinkClassName}
             target="_blank"
             rel="noopener"
           >

@@ -1,16 +1,24 @@
 import { ClassNameProp } from 'types/common';
-import classNames from 'classnames';
 import TwitterIcon from './TwitterIcon';
 import GithubIcon from './GithubIcon';
+import { getClassName } from '../../lib/getClassName';
 
 const SocialButtons: React.FC<ClassNameProp> = ({ className }) => {
-  const containerClassName = classNames(
-    className,
-    'flex justify-center items-center relative',
-  );
+  const containerClassName = getClassName({
+    [className]: !!className,
+    'flex justify-center items-center relative': true,
+  });
 
-  const svgClasses =
-    'hover:text-primary-500 fill-current transition ease-out duration-150';
+  const svgClasses = getClassName({
+    'fill-current transition ease-out duration-150': true,
+    dark: {
+      'hover:text-pink-500': true,
+    },
+    light: {
+      'hover:text-primary-500': true,
+    },
+  });
+
   const linkClasses = 'cursor-pointer mx-3';
 
   return (

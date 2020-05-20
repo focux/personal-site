@@ -1,20 +1,29 @@
 import { DetailedHTMLProps, HTMLAttributes } from 'react';
-import classNames from 'classnames';
+import { getClassName } from '../../lib/getClassName';
 
 type CodeProps = DetailedHTMLProps<HTMLAttributes<HTMLElement>, HTMLElement>;
 
 const Code: React.FC<CodeProps> = ({ className, ...props }) => {
-  const elementClassName = classNames(className, '');
-  const codeBlockClassName = classNames(className, 'rounded-md');
+  const elementClassName = getClassName({
+    [className]: !!className,
+    'rounded-md': !!className,
+  });
 
-  console.log('classname', className);
+  const containerClassName = getClassName({
+    light: {
+      'text-primary-500': true,
+    },
+    dark: {
+      'text-pink-500': true,
+    },
+  });
 
   return !className ? (
-    <span className="text-primary-500">
+    <span className={containerClassName}>
       `<code className={elementClassName} {...props} />`
     </span>
   ) : (
-    <code className={codeBlockClassName} {...props} />
+    <code className={elementClassName} {...props} />
   );
 };
 

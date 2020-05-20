@@ -1,12 +1,12 @@
 import { ClassNameProp } from 'types/common';
-import classNames from 'classnames';
 import Link from '../shared/Link';
+import { getClassName } from '../../lib/getClassName';
 
 const AboutMe: React.FC<ClassNameProp> = ({ className }) => {
-  const containerClassName = classNames(
-    className,
-    'text-xl sm:text-2xl space-y-8 leading-relaxed z-2 relative',
-  );
+  const containerClassName = getClassName({
+    [className]: !!className,
+    'text-xl sm:text-2xl space-y-8 leading-relaxed z-2 relative': true,
+  });
 
   return (
     <div className={containerClassName}>

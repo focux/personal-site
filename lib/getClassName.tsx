@@ -6,6 +6,8 @@ interface Classes<T> {
 
 type ClassesWithDark = Classes<boolean | Classes<boolean>> & {
   dark?: { [classes: string]: boolean };
+} & {
+  light?: { [classes: string]: boolean };
 };
 
 export const getClassName = (classes: ClassesWithDark) => {
@@ -19,8 +21,22 @@ export const getClassName = (classes: ClassesWithDark) => {
   for (const name of names) {
     if (name === 'dark') {
       if (darkMode) {
-        for (const darkModeClassName of Object.keys(classes['dark'])) {
-          activeClasses += ` ${darkModeClassName}`;
+        for (const darkClasses of Object.keys(classes['dark'])) {
+          if (classes['dark'][darkClasses]) {
+            activeClasses += ` ${darkClasses}`;
+          }
+        }
+      }
+
+      continue;
+    }
+
+    if (name === 'light') {
+      if (!darkMode) {
+        for (const lightClasses of Object.keys(classes['light'])) {
+          if (classes['light'][lightClasses]) {
+            activeClasses += ` ${lightClasses}`;
+          }
         }
       }
 

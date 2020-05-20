@@ -1,6 +1,6 @@
 import { ClassNameProp } from 'types/common';
-import classNames from 'classnames';
 import { DetailedHTMLProps, AnchorHTMLAttributes } from 'react';
+import { getClassName } from '../../lib/getClassName';
 
 type LinkProps = ClassNameProp &
   DetailedHTMLProps<
@@ -9,10 +9,16 @@ type LinkProps = ClassNameProp &
   > & { openInNewTab?: boolean };
 
 const Link: React.FC<LinkProps> = ({ className, openInNewTab, ...props }) => {
-  const containerClassName = classNames(
-    'b cursor-pointer hover:text-primary-500 transition ease-out duration-150 border-b-2 border-black hover:border-primary-500',
-    className,
-  );
+  const containerClassName = getClassName({
+    'b cursor-pointer transition ease-out duration-150 border-b-2 border-current hover:border-current': true,
+    [className]: !!className,
+    light: {
+      'hover:text-primary-500': true,
+    },
+    dark: {
+      'hover:text-pink-500': true,
+    },
+  });
 
   return (
     <a
