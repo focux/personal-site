@@ -12,7 +12,7 @@ export default function IndexPage({ posts }) {
     dark: {
       'bg-primary-dark text-gray-200': true,
     },
-    'container mx-auto px-8 md:px-16 lg:px-32 pt-24 bg-white': true,
+    'container mx-auto md:px-16 lg:px-32 pt-24 bg-white': true,
   });
 
   const outerClassName = getClassName({
@@ -31,7 +31,9 @@ export default function IndexPage({ posts }) {
         <Nav />
         <Hero className="mt-24" />
         <SocialButtons className="mt-12" />
-        <AboutMe className="mt-12 lg:px-24" />
+        <div className="px-8 sm:px-0">
+          <AboutMe className="mt-12 lg:px-24" />
+        </div>
         <BlogPosts posts={posts} className="mt-24" />
       </div>
     </div>
