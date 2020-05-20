@@ -15,7 +15,7 @@ As you might already know—if you saw my home page—I work at [BenchApp](https
 Besides all the good things I could say about Tailwind, one of the walls that we hit when working with it, was how difficult it was to build stateful components, because we have to write a lot of boilerplate code to handle the different classes for each state. To understand this problem, let's build a very simple avatar component using Tailwind:
 
 ```jsx
-const Avatar = ({ size, className: classNameProp, status, src  }) => {
+const Avatar = ({ size, className: classNameProp, status, src }) => {
   // we initialize our className var
   let imageClassName = classNameProp || '';
 
@@ -107,20 +107,25 @@ export const getClassName = (classes) => {
 Now, let's re-write our Avatar component using our brand new class utility and let's see how it looks now:
 
 ```jsx
-const Avatar = ({ size = 'sm', className: classNameProp, status = 'offline', src  }) => {
+const Avatar = ({
+  size = 'sm',
+  className: classNameProp,
+  status = 'offline',
+  src,
+}) => {
   const imageClassName = getClassName({
-      'h10 w-10': size === 'sm',
-      'h-12 w-12': size === 'md',
-      'h-14 w-14': size === 'lg',
-      'rounded-full bg-gray-400 relative': true // common classes
+    'h10 w-10': size === 'sm',
+    'h-12 w-12': size === 'md',
+    'h-14 w-14': size === 'lg',
+    'rounded-full bg-gray-400 relative': true, // common classes
   });
 
   const statusBadgeClassName = getClassName({
-      'bg-green-400': status === 'online',
-      'bg-gray-300': status === 'offline',
-      'bg-orange-400': status === 'away',
-      'absolute bottom-0 right-0 block h-2.5 w-2.5 rounded-full text-white shadow-solid': true
-  })
+    'bg-green-400': status === 'online',
+    'bg-gray-300': status === 'offline',
+    'bg-orange-400': status === 'away',
+    'absolute bottom-0 right-0 block h-2.5 w-2.5 rounded-full text-white shadow-solid': true,
+  });
 
   return (
     <div className="relative">
