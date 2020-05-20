@@ -3,16 +3,20 @@ import classNames from 'classnames';
 import Heading from '../shared/Heading';
 import BlogPostsItem from './BlogPostsItem';
 import { getAllPosts, Matter } from '../../lib/api';
+import { getClassName } from '../../lib/getClassName';
 
 type BlogPostsProps = {
   posts: { [key in keyof Matter]: string }[];
 } & ClassNameProp;
 
 const BlogPosts: React.FC<BlogPostsProps> = ({ className, posts }) => {
-  const containerClassName = classNames(
-    'bg-black z-10 relative py-12 px-8 md:px-12 lg:px-24',
-    className,
-  );
+  const containerClassName = getClassName({
+    'bg-black z-10 relative py-12 px-8 md:px-12 lg:px-24': true,
+    [className]: !!className,
+    dark: {
+      'bg-primary-dark-secondary': true,
+    }
+  });
 
   return (
     <div id="writing" className={containerClassName} style={{ minHeight: 500 }}>

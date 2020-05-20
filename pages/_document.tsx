@@ -17,7 +17,7 @@ export default class MyDocument extends Document<{ ids: any[]; css: any }> {
             href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.0.3/styles/night-owl.min.css"
           />
         </Head>
-        <body>
+        <body className="bg-black">
           <Main />
           <NextScript />
         </body>

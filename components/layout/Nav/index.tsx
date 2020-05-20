@@ -1,8 +1,7 @@
 import Menu from './Menu';
 import MenuItem from './MenuItem';
-import { useState } from 'react';
-import { useRouter } from 'next/router';
 import Link from 'next/link';
+import { useDarkMode } from '../../../lib/useDarkMode';
 
 type NavLinks = { url: string; name: string };
 
@@ -10,11 +9,7 @@ const leftSideLinks: NavLinks[] = [
   {
     url: '#writing',
     name: 'Writing',
-  },
-  {
-    url: '',
-    name: 'Works',
-  },
+  }
 ];
 
 const rightSideLinks: NavLinks[] = [
@@ -29,9 +24,7 @@ type NavProps = { type?: 'regular' | 'post' };
 const Nav: React.FC<NavProps> = ({ type = 'regular' }) => {
   const isPostNav = type === 'post';
 
-  const [darkMode, setDarkMode] = useState(false);
-
-  const router = useRouter();
+  const { darkMode, setDarkMode } = useDarkMode();
 
   return (
     <div
@@ -96,13 +89,13 @@ const Nav: React.FC<NavProps> = ({ type = 'regular' }) => {
           )}
           <Link href="/">
             <a className="cursor-pointer">
-              <img src="/avatar.jpg" alt="Leonardo Dominguez's Avatar" />
+              <img src="/avatar.png" alt="Leonardo Dominguez's Avatar" />
             </a>
           </Link>
         </div>
       </div>
       <Menu className="hidden lg:flex">
-        {!isPostNav ? (
+        {false ? (
           rightSideLinks.map((v) => (
             <MenuItem key={v.name}>
               <a href={v.url}>{v.name}</a>
@@ -112,16 +105,16 @@ const Nav: React.FC<NavProps> = ({ type = 'regular' }) => {
           <div className="flex items-center">
             <button
               className="focus:outline-none focus:shadow-outline rounded"
-              onClick={() => setDarkMode(true)}
+              onClick={() => setDarkMode(false)}
             >
-              <MenuItem active={darkMode}>Dark </MenuItem>
+              <MenuItem active={!darkMode}>Light</MenuItem>
             </button>
             <div className="mx-1">/</div>
             <button
               className="focus:outline-none focus:shadow-outline rounded"
-              onClick={() => setDarkMode(false)}
+              onClick={() => setDarkMode(true)}
             >
-              <MenuItem active={!darkMode}>Light</MenuItem>
+              <MenuItem active={darkMode}>Dark</MenuItem>
             </button>
           </div>
         )}

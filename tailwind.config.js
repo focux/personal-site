@@ -1,5 +1,5 @@
 const defaultTheme = require('tailwindcss/defaultTheme');
-const plugin = require('tailwindcss/plugin')
+const plugin = require('tailwindcss/plugin');
 
 module.exports = {
   purge: ['./components/**/*.tsx', './pages/**/*.tsx'],
@@ -19,6 +19,8 @@ module.exports = {
           700: '#022C98',
           800: '#022172',
           900: '#01164C',
+          dark: '#000719',
+          'dark-secondary': '#010f33',
         },
       },
       screens: {
@@ -28,7 +30,7 @@ module.exports = {
     },
   },
   variants: {
-    fontSize: ['responsive', 'hover', 'focus', 'important']
+    fontSize: ['responsive', 'hover', 'focus', 'important'],
   },
   plugins: [
     plugin(function ({ addVariant, variants }) {
