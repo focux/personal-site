@@ -14,8 +14,10 @@
     "next": "^9.4.1",
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
+    "rehype-highlight": "^4.0.0",
+    "rehype-react": "^5.0.1",
     "remark-parse": "^8.0.2",
-    "remark-react": "^7.0.1",
+    "remark-rehype": "^7.0.0",
     "unified": "^9.0.0"
   },
   "devDependencies": {

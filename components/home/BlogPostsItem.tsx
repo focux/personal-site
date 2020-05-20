@@ -21,7 +21,7 @@ const BlogPostsItem: React.FC<BlogPostsItemProps> = ({
   return (
     <Link href="/post/[slug]" as={`/post/${slug}`}>
       <a>
-        <div className="cursor-pointer border-l-2 border-transparent hover:border-white pl-2 -ml-2 transiton ease-out duration-150">
+        <div className="cursor-pointer border-l-2 border-transparent hover:border-white pl-2 -ml-2 transition ease-out duration-150">
           <Heading level={3} className="text-white" style={{ fontWeight: 300 }}>
             {title}
           </Heading>

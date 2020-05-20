@@ -9,7 +9,7 @@ const SocialButtons: React.FC<ClassNameProp> = ({ className }) => {
     'flex justify-center items-center relative',
   );
 
-  const svgClasses = 'hover:text-primary-500 fill-current transiton ease-out duration-150';
+  const svgClasses = 'hover:text-primary-500 fill-current transition ease-out duration-150';
   const linkClasses = 'cursor-pointer mx-3';
 
   return (

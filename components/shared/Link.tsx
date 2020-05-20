@@ -10,7 +10,7 @@ type LinkProps = ClassNameProp &
 
 const Link: React.FC<LinkProps> = ({ className, openInNewTab, ...props }) => {
   const containerClassName = classNames(
-    'b cursor-pointer hover:text-primary-500 transiton ease-out duration-150 border-b-2 border-black hover:border-primary-500',
+    'b cursor-pointer hover:text-primary-500 transition ease-out duration-150 border-b-2 border-black hover:border-primary-500',
     className,
   );
 

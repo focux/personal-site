@@ -4,12 +4,17 @@ import Paragraph from '../../components/shared/Paragraph';
 import markdownToReact from '../../lib/markdownToReact';
 import { getPostBySlug, getAllPosts } from '../../lib/api';
 import dayjs from 'dayjs';
-import Head from 'next/head'
+import Head from 'next/head';
+import TwitterIcon from '../../components/home/TwitterIcon';
 
 export default function PostPage({
-  post: { content, title, category, date, time },
+  post: { content, title, category, date, time, slug },
 }) {
   const parsedContent = markdownToReact(content);
+
+  const twitterText = encodeURI(
+    `"${title}" by @foocux https://focux.dev/post/${slug}"`,
+  );
 
   return (
     <>
@@ -18,13 +23,24 @@ export default function PostPage({
       </Head>
       <article className="container mx-auto px-8 md:px-16 lg:px-32 py-24">
         <Nav type="post" />
-        <Heading level={1} className="mt-20 !text-4xl sm:!text-5xl" style={{ fontWeight: 200 }}>
+        <Heading
+          level={1}
+          className="mt-20 !text-4xl sm:!text-5xl"
+          style={{ fontWeight: 200 }}
+        >
           {title}
         </Heading>
         <Paragraph className="text-gray-500">
           {date} / {category} / {time}
         </Paragraph>
         <main className="space-y-8 mt-12">{parsedContent}</main>
+        <div className="bg-gray-800 w-20 h-px mt-12" />
+        <div className="flex mt-8 text-lg items-center">
+          Share on{' '}
+          <a href={`https://twitter.com/intent/tweet?text=${twitterText}`} className="cursor-pointer hover:text-primary-500">
+            <TwitterIcon className="ml-2 h-6 w-6 fill-current transition ease-out duration-150" />
+          </a>
+        </div>
       </article>
     </>
   );

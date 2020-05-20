@@ -11,6 +11,11 @@ export default class MyDocument extends Document<{ ids: any[]; css: any }> {
       <html lang="en">
         <Head>
           <link rel="stylesheet" href="https://rsms.me/inter/inter.css" />
+          {/* <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.0.3/languages/typescript.min.js" /> */}
+          <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.0.3/styles/night-owl.min.css"
+          />
         </Head>
         <body>
           <Main />
@@ -20,3 +25,4 @@ export default class MyDocument extends Document<{ ids: any[]; css: any }> {
     );
   }
 }
+// https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.0.3/styles/night-owl.min.css
