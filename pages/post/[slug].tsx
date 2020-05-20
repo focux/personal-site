@@ -55,6 +55,8 @@ export default function PostPage({
           <a
             href={`https://twitter.com/intent/tweet?text=${twitterText}`}
             className="cursor-pointer hover:text-primary-500"
+            target="_blank"
+            rel="noopener"
           >
             <TwitterIcon className="ml-2 h-6 w-6 fill-current transition ease-out duration-150" />
           </a>
