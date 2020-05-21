@@ -7,6 +7,8 @@
     "start": "next start"
   },
   "dependencies": {
+    "canvas": "^2.6.1",
+    "canvas-multiline-text": "^1.0.3",
     "dayjs": "^1.8.27",
     "gray-matter": "^4.0.2",
     "next": "^9.4.1",

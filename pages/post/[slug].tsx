@@ -45,6 +45,7 @@ export default function PostPage({
     <div className={containerClassName}>
       <Head>
         <title>{title}</title>
+        <meta property="og:image" content={`/api/og?title=${title}`} />
       </Head>
       <article className={articleClassName}>
         <Nav type="post" />
