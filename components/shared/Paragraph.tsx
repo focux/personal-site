@@ -9,7 +9,7 @@ type ParagraphProps = DetailedHTMLProps<
 const Paragraph: React.FC<ParagraphProps> = ({ className, ...props }) => {
   const elementClassName = getClassName({
     [className]: !!className,
-    'leading-loose': true,
+    'leading-loose text-lg': true,
   });
 
   return <p className={elementClassName} {...props} />;
