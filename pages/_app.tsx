@@ -1,6 +1,5 @@
 import '../styles/index.css';
 import { DarkModeContextProvider } from '../lib/useDarkMode';
-import Meta from '../components/shared/Meta';
 import { useEffect } from 'react';
 import Router from 'next/router';
 import * as gtag from '../lib/gtag';
@@ -18,7 +17,6 @@ const App = ({ Component, pageProps }) => {
 
   return (
     <DarkModeContextProvider>
-      <Meta />
       <Component {...pageProps} />
     </DarkModeContextProvider>
   );

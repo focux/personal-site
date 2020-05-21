@@ -4,8 +4,14 @@ import SocialButtons from '../components/home/SocialButtons';
 import AboutMe from '../components/home/AboutMe';
 import BlogPosts from '../components/home/BlogPosts';
 import { getAllPosts } from '../lib/api';
-import Head from 'next/head';
 import { getClassName } from '../lib/getClassName';
+import Meta from '../components/shared/Meta';
+
+const title = 'Leonardo E. Dominguez';
+const description =
+  "I'm a software developer interested in jamstack, mobile apps, user experience and new tech.";
+const url = 'https://focux.dev/';
+const imageUrl = `https://focux.dev/api/org?title=${description}`;
 
 export default function IndexPage({ posts }) {
   const containerClassName = getClassName({
@@ -23,20 +29,25 @@ export default function IndexPage({ posts }) {
   });
 
   return (
-    <div className={outerClassName}>
-      <div className={containerClassName}>
-        <Head>
-          <title>Leonardo E. Dominguez | Focux</title>
-        </Head>
-        <Nav />
-        <Hero className="mt-24" />
-        <SocialButtons className="mt-12" />
-        <div className="px-8 sm:px-0">
-          <AboutMe className="mt-12 lg:px-24" />
+    <>
+      <Meta
+        title={title}
+        description={description}
+        url={url}
+        imageUrl={imageUrl}
+      />
+      <div className={outerClassName}>
+        <div className={containerClassName}>
+          <Nav />
+          <Hero className="mt-24" />
+          <SocialButtons className="mt-12" />
+          <div className="px-8 sm:px-0">
+            <AboutMe className="mt-12 lg:px-24" />
+          </div>
+          <BlogPosts posts={posts} className="mt-24" />
         </div>
-        <BlogPosts posts={posts} className="mt-24" />
       </div>
-    </div>
+    </>
   );
 }
 
