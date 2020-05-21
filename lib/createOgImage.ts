@@ -32,7 +32,7 @@ export const createOgImage = async ({ title }: { title: string }) => {
       width: canvas.width - 20,
       height: canvas.height - 150,
     },
-    font: 'sans-serif',
+    font: 'Impact',
     verbose: false,
     lineHeight: 1.4,
     minFontSize: 15,
@@ -40,7 +40,7 @@ export const createOgImage = async ({ title }: { title: string }) => {
   });
 
   context.fillStyle = '#044AFD';
-  context.font = 'regular 22pt sans-serif';
+  context.font = 'regular 22pt Impact';
   context.fillText(URL, 600, 570);
 
   return canvas.toBuffer('image/png');
