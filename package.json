@@ -5,7 +5,7 @@
     "dev": "next",
     "build": "next build",
     "start": "next start",
-    "vercel-build": "ls -al /usr/lib64 && yum -y groupinstall 'Development Tools' && yum install -y nodejs cairo cairo-devel cairomm-devel libjpeg-turbo-devel pango pango-devel pangomm pangomm-devel giflib-devel && npm install canvas@next && cp /usr/lib64/{libpixman-1.so.0,libfontconfig.so.1,libfreetype.so.6.14.0,libuuid.so.1,libmount.so.1,libblkid.so.1} /lib && npm run build"
+    "vercel-build": "ls -al /usr/lib64 && yum install -y nodejs cairo cairo-devel cairomm-devel libjpeg-turbo-devel pango pango-devel pangomm pangomm-devel giflib-devel && cp /usr/lib64/{libpixman-1.so.0,libfontconfig.so.1,libfreetype.so.6.14.0,libuuid.so.1,libmount.so.1,libblkid.so.1} node_modules/canvas/build/Release/ && npm run build"
   },
   "dependencies": {
     "canvas": "^2.6.1",
