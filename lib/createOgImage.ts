@@ -40,7 +40,7 @@ export const createOgImage = async ({ title }: { title: string }) => {
   });
 
   context.fillStyle = '#044AFD';
-  context.font = '22pt Impact';
+  context.font = '22px Impact';
   context.fillText(URL, 600, 570);
 
   return canvas.toBuffer('image/png');
