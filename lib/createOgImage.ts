@@ -1,10 +1,8 @@
 import { createCanvas, loadImage, registerFont } from 'canvas';
-import path from 'path';
+import { SITE_URI } from '../config/constants';
 const drawMultilineText = require('canvas-multiline-text');
 
-const fontPath = path.join(process.env.PWD + '/public/Inter.otf');
-
-registerFont(fontPath, { family: 'Inter' });
+registerFont(`${SITE_URI}Inter.otf`, { family: 'Inter' });
 
 const URL = 'focux.dev';
 
@@ -18,8 +16,7 @@ export const createOgImage = async ({ title }: { title: string }) => {
   context.fillStyle = '#fff';
   context.fillRect(0, 0, width, height);
 
-  const imagePath = path.join(process.env.PWD + '/public/og-frame.png');
-  const image = await loadImage(imagePath);
+  const image = await loadImage(`${SITE_URI}og-frame.png`);
 
   context.drawImage(image, 0, 0);
 
