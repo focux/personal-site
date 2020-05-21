@@ -32,7 +32,7 @@ export const createOgImage = async ({ title }: { title: string }) => {
       width: canvas.width - 20,
       height: canvas.height - 150,
     },
-    font: '600 system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, sans-serif, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"',
+    font: 'sans-serif',
     verbose: false,
     lineHeight: 1.4,
     minFontSize: 15,
@@ -40,7 +40,7 @@ export const createOgImage = async ({ title }: { title: string }) => {
   });
 
   context.fillStyle = '#044AFD';
-  context.font = '300 22pt system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, sans-serif, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"';
+  context.font = 'regular 22pt sans-serif';
   context.fillText(URL, 600, 570);
 
   return canvas.toBuffer('image/png');
