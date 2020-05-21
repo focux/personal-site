@@ -45,7 +45,7 @@ export default function PostPage({
   return (
     <>
       <Meta
-        title={`Leonardo Dominguez — ${title}`}
+        title={`${title} — Leonardo Dominguez`}
         description={title}
         url={postUrl}
         imageUrl={``}

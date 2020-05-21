@@ -7,7 +7,7 @@ import { getAllPosts } from '../lib/api';
 import { getClassName } from '../lib/getClassName';
 import Meta from '../components/shared/Meta';
 
-const title = 'Leonardo E. Dominguez';
+const title = 'Leonardo Dominguez';
 const description =
   "I'm a software developer interested in jamstack, mobile apps, user experience and new tech.";
 const url = 'https://focux.dev/';
@@ -51,7 +51,7 @@ export default function IndexPage({ posts }) {
   );
 }
 
-export async function getStaticProps({ params }) {
+export async function getStaticProps() {
   const posts = getAllPosts([
     'title',
     'content',
