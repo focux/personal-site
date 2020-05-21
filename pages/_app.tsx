@@ -1,14 +1,27 @@
 import '../styles/index.css';
 import { DarkModeContextProvider } from '../lib/useDarkMode';
 import Meta from '../components/shared/Meta';
+import { useEffect } from 'react';
+import Router from 'next/router';
+import * as gtag from '../lib/gtag';
 
-function MyApp({ Component, pageProps }) {
+const App = ({ Component, pageProps }) => {
+  useEffect(() => {
+    const handleRouteChange = (url: string) => {
+      gtag.pageview(url);
+    };
+    Router.events.on('routeChangeComplete', handleRouteChange);
+    return () => {
+      Router.events.off('routeChangeComplete', handleRouteChange);
+    };
+  }, []);
+
   return (
     <DarkModeContextProvider>
       <Meta />
       <Component {...pageProps} />
     </DarkModeContextProvider>
   );
-}
+};
 
-export default MyApp;
+export default App;

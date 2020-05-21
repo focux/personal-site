@@ -2,7 +2,7 @@ import Head from 'next/head';
 
 export default function Meta() {
   const description =
-    "I'm a software developer interested in jamstack, mobile apps, user experience and new tech—now looking at Rust.";
+    "I'm a software developer interested in jamstack, mobile apps, user experience and new tech.";
 
   const url = 'https://focux.dev/';
 
