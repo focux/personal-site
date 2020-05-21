@@ -2,7 +2,8 @@ import { createCanvas, loadImage, registerFont } from 'canvas';
 import { SITE_URI } from '../config/constants';
 const drawMultilineText = require('canvas-multiline-text');
 
-registerFont(`${SITE_URI}Inter.otf`, { family: 'Inter' });
+// doesn't work on vercel https://github.com/zeit/next.js/issues/8251
+// registerFont(__dirname + `public/Inter.otf`, { family: 'Inter' });
 
 const URL = 'focux.dev';
 
@@ -31,7 +32,7 @@ export const createOgImage = async ({ title }: { title: string }) => {
       width: canvas.width - 20,
       height: canvas.height - 150,
     },
-    font: 'Inter',
+    font: '600 system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, sans-serif, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"',
     verbose: false,
     lineHeight: 1.4,
     minFontSize: 15,
@@ -39,7 +40,7 @@ export const createOgImage = async ({ title }: { title: string }) => {
   });
 
   context.fillStyle = '#044AFD';
-  context.font = 'bold 22pt Inter';
+  context.font = '300 22pt system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, sans-serif, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"';
   context.fillText(URL, 600, 570);
 
   return canvas.toBuffer('image/png');
