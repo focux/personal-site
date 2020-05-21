@@ -2,13 +2,6 @@ import { createCanvas, loadImage, registerFont } from 'canvas';
 import { SITE_URI } from '../config/constants';
 const drawMultilineText = require('canvas-multiline-text');
 
-// doesn't work on vercel https://github.com/zeit/next.js/issues/8251
-try {
-registerFont(require.resolve('canvas/Inter.otf'), { family: 'Inter' });
-} catch (Err) {
-    console.log('err', Err)
-}
-
 const URL = 'focux.dev';
 
 export const createOgImage = async ({ title }: { title: string }) => {
