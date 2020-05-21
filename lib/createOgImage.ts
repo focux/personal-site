@@ -3,7 +3,11 @@ import { SITE_URI } from '../config/constants';
 const drawMultilineText = require('canvas-multiline-text');
 
 // doesn't work on vercel https://github.com/zeit/next.js/issues/8251
-// registerFont(__dirname + `public/Inter.otf`, { family: 'Inter' });
+try {
+registerFont(require.resolve('canvas/Inter.otf'), { family: 'Inter' });
+} catch (Err) {
+    console.log('err', Err)
+}
 
 const URL = 'focux.dev';
 
@@ -32,7 +36,7 @@ export const createOgImage = async ({ title }: { title: string }) => {
       width: canvas.width - 20,
       height: canvas.height - 150,
     },
-    font: 'Impact',
+    font: 'Inter',
     verbose: false,
     lineHeight: 1.4,
     minFontSize: 15,
@@ -40,7 +44,7 @@ export const createOgImage = async ({ title }: { title: string }) => {
   });
 
   context.fillStyle = '#044AFD';
-  context.font = '22px Impact';
+  context.font = '22px Inter';
   context.fillText(URL, 600, 570);
 
   return canvas.toBuffer('image/png');
