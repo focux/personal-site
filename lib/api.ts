@@ -9,6 +9,7 @@ export interface Matter {
   slug: string;
   category: string;
   time: string;
+  description: string;
 }
 
 const postsDirectory = join(process.cwd(), '_posts');

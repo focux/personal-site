@@ -11,7 +11,7 @@ import { SITE_URI } from '../../config/constants';
 import { generateOgImage } from '../../lib/generateOgImage';
 
 export default function PostPage({
-  post: { content, title, category, date, time, slug },
+  post: { content, title, category, date, time, slug, description },
 }) {
   const parsedContent = markdownToReact(content);
 
@@ -47,7 +47,7 @@ export default function PostPage({
     <>
       <Meta
         title={`${title} — Leonardo Dominguez`}
-        description={title}
+        description={description}
         url={postUrl}
         imageUrl={`${SITE_URI}og/${slug}.png`}
       />
@@ -91,6 +91,7 @@ export async function getStaticProps({ params }) {
     'content',
     'category',
     'time',
+    'description',
   ]);
   const content = post.content;
 

@@ -3,6 +3,7 @@ title: 'How to build better Tailwind components in React'
 date: '2020-05-21T03:29:18.105Z'
 category: 'React'
 time: '5 Min'
+description: 'Besides all the good things I could say about Tailwind, one of the walls that we hit when working with it, was how difficult it was to build stateful components, because we have to write a lot of boilerplate code to handle the different classes for each state.'
 ---
 
 

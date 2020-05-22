@@ -10,11 +10,20 @@ type MetaProps = {
 const Meta: React.FC<MetaProps> = ({ description, title, imageUrl, url }) => {
   return (
     <Head>
+      {/* Primary Meta Tags*/}
       <title>{title}</title>
-      <meta name="theme-color" content="#000" />
-      <meta property="og:image" content={imageUrl} />
+      <meta name="title" content={title} />
       <meta name="description" content={description} />
+      <meta name="theme-color" content="#000" />
+
+      {/* Open Graph / Facebook */}
+      <meta property="og:type" content="website" />
       <meta property="og:url" content={url} />
+      <meta property="og:title" content={title} />
+      <meta property="og:description" content={description} />
+      <meta property="og:image" content={imageUrl} />
+
+      {/* Twitter */}
       <meta property="twitter:card" content="summary_large_image" />
       <meta name="twitter:url" content={url} />
       <meta name="twitter:title" content={title} />
