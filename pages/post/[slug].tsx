@@ -49,7 +49,7 @@ export default function PostPage({
         title={`${title} — Leonardo Dominguez`}
         description={title}
         url={postUrl}
-        imageUrl={`${SITE_URI}public/og/${slug}.png`}
+        imageUrl={`${SITE_URI}og/${slug}.png`}
       />
       <div className={containerClassName}>
         <article className={articleClassName}>

@@ -35,7 +35,7 @@ export default function IndexPage({ posts }) {
         title={title}
         description={description}
         url={url}
-        imageUrl={`${SITE_URI}public/og/home.png`}
+        imageUrl={`${SITE_URI}og/home.png`}
       />
       <div className={outerClassName}>
         <div className={containerClassName}>
