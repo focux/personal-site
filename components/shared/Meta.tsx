@@ -15,12 +15,13 @@ const Meta: React.FC<MetaProps> = ({ description, title, imageUrl, url }) => {
       <meta property="og:image" content={imageUrl} />
       <meta name="description" content={description} />
       <meta property="og:url" content={url} />
-      <meta name="twitter:title" content={title} />
+      <meta property="twitter:card" content="summary_large_image" />
       <meta name="twitter:url" content={url} />
+      <meta name="twitter:title" content={title} />
+      <meta name="twitter:description" content={description} />
+      <meta property="twitter:image" content={imageUrl} />
       <meta name="twitter:site" content="@foocux" />
       <meta name="twitter:creator" content="@foocux" />
-      <meta property="twitter:image" content={imageUrl} />
-      <meta name="twitter:description" content={description} />
     </Head>
   );
 };
