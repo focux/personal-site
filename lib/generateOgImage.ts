@@ -1,10 +1,26 @@
-import { createCanvas, loadImage, registerFont } from 'canvas';
+import { createCanvas, loadImage } from 'canvas';
 import { SITE_URI } from '../config/constants';
-const drawMultilineText = require('canvas-multiline-text');
+import { writeFileSync, existsSync } from 'fs';
+import drawMultilineText from 'canvas-multiline-text'
 
-const URL = 'focux.dev';
+type OgImagePayload = {
+  slug: string;
+  title: string;
+};
 
-export const createOgImage = async ({ title }: { title: string }) => {
+export const generateOgImage = async ({ slug, title }: OgImagePayload) => {
+  const filepath = `public/og/${slug}.png`;
+
+  if (!existsSync(filepath)) {
+    const imgBuffer = await createImage({ title });
+
+    writeFileSync(filepath, imgBuffer);
+  }
+};
+
+const URL = SITE_URI.replace(/\//g, '').replace('https:', '');
+
+export const createImage = async ({ title }: Pick<OgImagePayload, 'title'>) => {
   const width = 1200;
   const height = 630;
 
@@ -25,9 +41,9 @@ export const createOgImage = async ({ title }: { title: string }) => {
   drawMultilineText(context, title, {
     rect: {
       x: 600,
-      y: 400,
+      y: 380,
       width: canvas.width - 20,
-      height: canvas.height - 150,
+      height: canvas.height - 170,
     },
     font: 'Inter',
     verbose: false,
@@ -38,7 +54,7 @@ export const createOgImage = async ({ title }: { title: string }) => {
 
   context.fillStyle = '#044AFD';
   context.font = '22px Inter';
-  context.fillText(URL, 600, 570);
+  context.fillText(URL, 600, 580);
 
   return canvas.toBuffer('image/png');
 };

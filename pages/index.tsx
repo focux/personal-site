@@ -6,12 +6,13 @@ import BlogPosts from '../components/home/BlogPosts';
 import { getAllPosts } from '../lib/api';
 import { getClassName } from '../lib/getClassName';
 import Meta from '../components/shared/Meta';
+import { generateOgImage } from '../lib/generateOgImage';
+import { SITE_URI } from '../config/constants';
 
 const title = 'Leonardo Dominguez';
 const description =
   "I'm a software developer interested in jamstack, mobile apps, user experience and new tech.";
 const url = 'https://focux.dev/';
-const imageUrl = `https://focux.dev/api/org?title=${description}`;
 
 export default function IndexPage({ posts }) {
   const containerClassName = getClassName({
@@ -34,7 +35,7 @@ export default function IndexPage({ posts }) {
         title={title}
         description={description}
         url={url}
-        imageUrl={imageUrl}
+        imageUrl={`${SITE_URI}public/og/home.png`}
       />
       <div className={outerClassName}>
         <div className={containerClassName}>
@@ -60,6 +61,8 @@ export async function getStaticProps() {
     'time',
     'category',
   ]);
+
+  await generateOgImage({ slug: 'home', title: 'Leonardo Dominguez' });
 
   return {
     props: {
