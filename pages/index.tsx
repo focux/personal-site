@@ -53,14 +53,7 @@ export default function IndexPage({ posts }) {
 }
 
 export async function getStaticProps() {
-  const posts = getAllPosts([
-    'title',
-    'content',
-    'slug',
-    'date',
-    'time',
-    'category',
-  ]);
+  const posts = getAllPosts(['title', 'slug', 'date', 'time', 'category']);
 
   await generateOgImage({ slug: 'home', title: 'Leonardo Dominguez' });
 
