@@ -1,7 +1,8 @@
 import Nav from '../../components/layout/Nav';
 import Heading from '../../components/shared/Heading';
 import Paragraph from '../../components/shared/Paragraph';
-import markdownToReact from '../../lib/markdownToReact';
+import markdownToHtml from '../../lib/markdownToHtml';
+import htmlToReact from '../../lib/htmlToReact';
 import { getPostBySlug, getAllPosts } from '../../lib/api';
 import dayjs from 'dayjs';
 import TwitterIcon from '../../components/home/TwitterIcon';
@@ -9,13 +10,12 @@ import { getClassName } from '../../lib/getClassName';
 import Meta from '../../components/shared/Meta';
 import { SITE_URI } from '../../config/constants';
 import { generateOgImage } from '../../lib/generateOgImage';
-import { Head } from 'next/document';
 import { useState, useEffect } from 'react';
 
 export default function PostPage({
   post: { content, title, category, date, time, slug, description },
 }) {
-  const parsedContent = markdownToReact(content);
+  const parsedContent = htmlToReact(content);
 
   const containerClassName = getClassName({
     'bg-white': true,
@@ -112,7 +112,7 @@ export async function getStaticProps({ params }) {
     'time',
     'description',
   ]);
-  const content = post.content;
+  const content = markdownToHtml(post.content);
 
   await generateOgImage({ slug: post.slug, title: post.title });
 
