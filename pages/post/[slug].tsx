@@ -11,6 +11,7 @@ import Meta from '../../components/shared/Meta';
 import { SITE_URI } from '../../config/constants';
 import { generateOgImage } from '../../lib/generateOgImage';
 import { useState, useEffect } from 'react';
+import Head from 'next/head';
 
 export default function PostPage({
   post: { content, title, category, date, time, slug, description },
@@ -45,31 +46,33 @@ export default function PostPage({
     },
   });
 
-  const [hlLoaded, setHlLoaded] = useState(false);
+  const [loaded, setLoaded] = useState(false);
   useEffect(() => {
-    setHlLoaded(true);
-  }, [hlLoaded]);
+    setLoaded(true);
+  }, []);
 
   return (
     <>
-      <Meta
-        title={`${title} — Leonardo Dominguez`}
-        description={description}
-        url={postUrl}
-        imageUrl={`${SITE_URI}og/${slug}.png`}
-      >
-        <link
-          rel={hlLoaded ? 'stylesheet' : 'preload'}
-          as="style"
-          href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.0.3/styles/night-owl.min.css"
-        />
+      <Head>
+        {loaded && (
+          <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.0.3/styles/night-owl.min.css"
+          />
+        )}
         <noscript>
           <link
             rel="stylesheet"
             href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.0.3/styles/night-owl.min.css"
           />
         </noscript>
-      </Meta>
+      </Head>
+      <Meta
+        title={`${title} — Leonardo Dominguez`}
+        description={description}
+        url={postUrl}
+        imageUrl={`${SITE_URI}og/${slug}.png`}
+      />
       <div className={containerClassName}>
         <article className={articleClassName}>
           <Nav type="post" />
@@ -80,7 +83,7 @@ export default function PostPage({
           >
             {title}
           </Heading>
-          <Paragraph className="text-gray-500">
+          <Paragraph className="text-gray-700">
             {date} / {category} / {time}
           </Paragraph>
           <main className="space-y-8 mt-12">{parsedContent}</main>

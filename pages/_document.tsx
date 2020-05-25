@@ -17,12 +17,11 @@ export default class MyDocument extends Document<{ ids: any[]; css: any }> {
             src={`https://www.googletagmanager.com/gtag/js?id=${GA_TRACKING_ID}`}
           />
           <link
+            // rel={this.state.loaded ? 'stylesheet' : 'preload'}
+            id="font-link"
             rel="preload"
             as="style"
             href="https://rsms.me/inter/inter.css"
-            onLoad={(e) => {
-              e.currentTarget.rel = 'stylesheet';
-            }}
           />
           <noscript>
             <link rel="stylesheet" href="https://rsms.me/inter/inter.css" />
@@ -36,6 +35,13 @@ export default class MyDocument extends Document<{ ids: any[]; css: any }> {
             gtag('config', '${GA_TRACKING_ID}', {
               page_path: window.location.pathname,
             });
+
+            var link = document.getElementById('font-link');
+
+            link.onload = function () {
+              this.onload = null;
+              this.rel = 'stylesheet';
+            }
           `,
             }}
           />
