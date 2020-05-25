@@ -16,7 +16,7 @@ export const DarkModeContextProvider: React.FC = (props) => {
     // set default value for darkMode
     if (typeof window !== 'undefined') {
       const darkModeMQ = window.matchMedia('(prefers-color-scheme: dark)');
-      console.log('darkMode', darkModeMQ.matches)
+
       setDarkMode(darkModeMQ.matches);
     }
   }, []);

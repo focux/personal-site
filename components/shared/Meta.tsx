@@ -7,7 +7,13 @@ type MetaProps = {
   url: string;
 };
 
-const Meta: React.FC<MetaProps> = ({ description, title, imageUrl, url }) => {
+const Meta: React.FC<MetaProps> = ({
+  description,
+  title,
+  imageUrl,
+  url,
+  children,
+}) => {
   return (
     <Head>
       {/* Primary Meta Tags*/}
@@ -31,6 +37,7 @@ const Meta: React.FC<MetaProps> = ({ description, title, imageUrl, url }) => {
       <meta property="twitter:image" content={imageUrl} />
       <meta name="twitter:site" content="@foocux" />
       <meta name="twitter:creator" content="@foocux" />
+      {children}
     </Head>
   );
 };

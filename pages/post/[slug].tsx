@@ -9,6 +9,8 @@ import { getClassName } from '../../lib/getClassName';
 import Meta from '../../components/shared/Meta';
 import { SITE_URI } from '../../config/constants';
 import { generateOgImage } from '../../lib/generateOgImage';
+import { Head } from 'next/document';
+import { useState, useEffect } from 'react';
 
 export default function PostPage({
   post: { content, title, category, date, time, slug, description },
@@ -43,6 +45,11 @@ export default function PostPage({
     },
   });
 
+  const [hlLoaded, setHlLoaded] = useState(false);
+  useEffect(() => {
+    setHlLoaded(true);
+  }, [hlLoaded]);
+
   return (
     <>
       <Meta
@@ -50,7 +57,19 @@ export default function PostPage({
         description={description}
         url={postUrl}
         imageUrl={`${SITE_URI}og/${slug}.png`}
-      />
+      >
+        <link
+          rel={hlLoaded ? 'stylesheet' : 'preload'}
+          as="style"
+          href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.0.3/styles/night-owl.min.css"
+        />
+        <noscript>
+          <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.0.3/styles/night-owl.min.css"
+          />
+        </noscript>
+      </Meta>
       <div className={containerClassName}>
         <article className={articleClassName}>
           <Nav type="post" />

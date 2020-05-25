@@ -16,7 +16,17 @@ export default class MyDocument extends Document<{ ids: any[]; css: any }> {
             async
             src={`https://www.googletagmanager.com/gtag/js?id=${GA_TRACKING_ID}`}
           />
-          <link rel="preload" href="https://rsms.me/inter/inter.css" />
+          <link
+            rel="preload"
+            as="style"
+            href="https://rsms.me/inter/inter.css"
+            onLoad={(e) => {
+              e.currentTarget.rel = 'stylesheet';
+            }}
+          />
+          <noscript>
+            <link rel="stylesheet" href="https://rsms.me/inter/inter.css" />
+          </noscript>
           <script
             dangerouslySetInnerHTML={{
               __html: `
@@ -28,10 +38,6 @@ export default class MyDocument extends Document<{ ids: any[]; css: any }> {
             });
           `,
             }}
-          />
-          <link
-            rel="preload"
-            href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.0.3/styles/night-owl.min.css"
           />
         </Head>
         <body className="bg-black">
