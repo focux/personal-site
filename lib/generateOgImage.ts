@@ -1,7 +1,9 @@
-import { createCanvas, loadImage } from 'canvas';
-import { SITE_URI } from '../config/constants';
+import { createCanvas, loadImage, registerFont } from 'canvas';
+import { SITE_URI, HOSTNAME } from '../config/constants';
 import { writeFileSync, existsSync } from 'fs';
-import drawMultilineText from 'canvas-multiline-text'
+import drawMultilineText from 'canvas-multiline-text';
+
+registerFont('public/Inter.otf', { family: 'Inter' });
 
 type OgImagePayload = {
   slug: string;
@@ -18,8 +20,6 @@ export const generateOgImage = async ({ slug, title }: OgImagePayload) => {
   }
 };
 
-const URL = SITE_URI.replace(/\//g, '').replace('https:', '');
-
 export const createImage = async ({ title }: Pick<OgImagePayload, 'title'>) => {
   const width = 1200;
   const height = 630;
@@ -30,7 +30,7 @@ export const createImage = async ({ title }: Pick<OgImagePayload, 'title'>) => {
   context.fillStyle = '#fff';
   context.fillRect(0, 0, width, height);
 
-  const image = await loadImage(`${SITE_URI}og-frame.png`);
+  const image = await loadImage(`${SITE_URI}frame.png`);
 
   context.drawImage(image, 0, 0);
 
@@ -54,7 +54,7 @@ export const createImage = async ({ title }: Pick<OgImagePayload, 'title'>) => {
 
   context.fillStyle = '#044AFD';
   context.font = '22px Inter';
-  context.fillText(URL, 600, 580);
+  context.fillText(HOSTNAME, 600, 580);
 
   return canvas.toBuffer('image/png');
 };

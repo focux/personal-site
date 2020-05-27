@@ -20,7 +20,7 @@ export default function htmlToReact(html: string) {
           p: Paragraph,
           blockquote: Blockquote,
           code: Code,
-          a: Link,
+          a: (props) => <Link openInNewTab {...props} />,
         },
       })
       // @ts-ignore types are not up to date.
