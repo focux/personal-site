@@ -14,9 +14,11 @@ export const generateOgImage = async ({ slug, title }: OgImagePayload) => {
   const filepath = `public/og/${slug}.png`;
 
   if (!existsSync(filepath)) {
+    try {
     const imgBuffer = await createImage({ title });
-
     writeFileSync(filepath, imgBuffer);
+    } catch (err) {}
+
   }
 };
 
