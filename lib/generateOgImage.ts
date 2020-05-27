@@ -1,7 +1,8 @@
 import { createCanvas, loadImage, registerFont } from 'canvas';
 import { SITE_URI, HOSTNAME } from '../config/constants';
-import { writeFileSync, existsSync } from 'fs';
+import { writeFileSync, existsSync, mkdirSync } from 'fs';
 import drawMultilineText from 'canvas-multiline-text';
+import path from 'path';
 
 registerFont('public/Inter.otf', { family: 'Inter' });
 
@@ -11,7 +12,12 @@ type OgImagePayload = {
 };
 
 export const generateOgImage = async ({ slug, title }: OgImagePayload) => {
-  const filepath = `public/og/${slug}.png`;
+  const dir = path.resolve('public', 'og');
+  const filepath = path.resolve(dir, `${slug}.png`);
+
+  if (!existsSync(dir)) {
+    mkdirSync(dir);
+  }
 
   if (!existsSync(filepath)) {
     const imgBuffer = await createImage({ title });
