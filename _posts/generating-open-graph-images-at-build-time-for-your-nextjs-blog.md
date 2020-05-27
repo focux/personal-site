@@ -111,9 +111,19 @@ Alright, now we have our function to generate a buffer containing our image but 
 We're going to create a new function called `generateOgImage` which is going to generate our image using the function we already created before and save it using the Node.js filesystem module:
 
 ```typescript
+...
+import { writeFileSync, existsSync, mkdirSync } from 'fs';
+import path from 'path';
+
 export const generateOgImage = async ({ slug, title }) => {
   // the path where our image is going to be saved.
-  const filepath = `public/og/${slug}.png`;
+  const dir = path.resolve('public', 'og');
+  const filepath = path.resolve(dir, `${slug}.png`);
+
+  // check if directory doesn't exist, if it doesn't, we create it
+  if (!existsSync(dir)) {
+    mkdirSync(dir);
+  }
 
   // check if the image already exists, if it does we don't need to generate it again
   if (!existsSync(filepath)) {
