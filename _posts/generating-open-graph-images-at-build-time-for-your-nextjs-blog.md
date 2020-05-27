@@ -161,4 +161,4 @@ Now your images are going to be generated every time you build your project or a
 
 We have just learned how to generate our Open Graph images for our blog posts at build time, now our posts are going to have beautiful images when shared on social media. If you are wondering how to keep improving your image, you could make it look prettier loading a custom font, add more information about your post like the read time and more. Below is the code used for this post.
 
-Go take a look at the code for this post on [Github](https://github.com/focux/personal-site/blob/master/lib/generateOgImage.ts)
+Go to take a look at the code for this post on [Github](https://github.com/focux/personal-site/blob/master/lib/generateOgImage.ts)
