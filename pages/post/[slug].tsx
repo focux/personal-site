@@ -12,6 +12,7 @@ import { SITE_URI } from '../../config/constants';
 import { generateOgImage } from '../../lib/generateOgImage';
 import { useState, useEffect } from 'react';
 import Head from 'next/head';
+import Link from '../../components/shared/Link';
 
 export default function PostPage({
   post: { content, title, category, date, time, slug, description },
@@ -99,6 +100,18 @@ export default function PostPage({
               <TwitterIcon className="ml-2 h-6 w-6 fill-current transition ease-out duration-150" />
             </a>
           </div>
+          <p className="flex justify-center mt-12">
+            To propose a change to this post,{' '}
+            <Link
+              className="ml-2"
+              href={`https://github.com/focux/personal-site/blob/master/_posts/${slug}.md`}
+              openInNewTab
+              rel="nofollow noopener"
+            >
+              edit on GitHub
+            </Link>
+            .
+          </p>
         </article>
       </div>
     </>
